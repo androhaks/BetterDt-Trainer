@@ -1,230 +1,267 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>androhaks Mods | BetterDt-Trainer</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.75);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
+            --bg-dark: #090d16;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --border-glow: rgba(245, 158, 11, 0.3);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #06b6d4 100%);
+            --gradient-primary: linear-gradient(135deg, #ff8c00 0%, #e81cff 50%, #00d2ff 100%);
+            --gradient-btn: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #06b6d4 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Задний фон с подсветкой под цвета иконки */
-        .glow-bg {
+        /* Светящиеся фоновые шары */
+        .ambient-light-1 {
             position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
+            top: -100px;
+            left: 20%;
+            width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(6, 182, 212, 0.1) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            filter: blur(90px);
             z-index: -1;
-            filter: blur(80px);
+        }
+
+        .ambient-light-2 {
+            position: absolute;
+            top: 100px;
+            right: 15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
         }
 
         header {
-            padding: 30px 20px;
+            padding: 40px 20px 20px;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(13, 17, 23, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .mod-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            background: var(--accent-gradient);
+        .brand-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
-        p.subtitle {
+        .brand-subtitle {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         main {
             flex: 1;
-            max-width: 900px;
+            max-width: 960px;
             width: 100%;
-            margin: 40px auto;
+            margin: 20px auto 50px;
             padding: 0 20px;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 35px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
         }
 
-        .card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: #fff;
+        .card-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+        }
+
+        .mod-icon-fallback {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+            flex-shrink: 0;
+        }
+
+        .mod-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .mod-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 35px;
         }
 
-        .feature-item {
+        .feature-box {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 18px;
+            transition: all 0.3s ease;
         }
 
-        .feature-item strong {
-            color: #f3f4f6;
-            display: block;
-            margin-bottom: 4px;
+        .feature-box:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .feature-box h4 {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-box p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .btn-group {
             display: flex;
             gap: 15px;
-            margin-top: 25px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
+            gap: 10px;
+            transition: all 0.25s ease;
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
-            color: #fff;
-            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+            background: var(--gradient-btn);
+            color: #ffffff;
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.35);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 16px 35px rgba(236, 72, 153, 0.5);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border-color);
+            padding: 25px;
             color: var(--text-muted);
             font-size: 0.9rem;
-            background: rgba(13, 17, 23, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
-    <div class="glow-bg"></div>
+    <div class="ambient-light-1"></div>
+    <div class="ambient-light-2"></div>
 
     <header>
-        <div class="logo-container">
-            <!-- Используй имя своей иконки в репозитории, например BetterDt_Trainer_icon.png -->
-            <img src="BetterDt_Trainer_icon.png" alt="Logo" class="mod-icon">
-            <h1>androhaks Mods</h1>
-        </div>
-        <p class="subtitle">Official home for BetterDt-Trainer and custom tools</p>
+        <h1 class="brand-title">androhaks Mods</h1>
+        <p class="brand-subtitle">Official home for BetterDt-Trainer and custom tools</p>
     </header>
 
     <main>
         <div class="card">
-            <h2>⚡ BetterDt-Trainer</h2>
-            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
-                A feature-rich trainer mod for Devices Tycoon, built on top of the BetterDT framework. Manage your in-game currency, research points, and interface themes effortlessly with a custom glass-morphism UI.
+            <div class="card-header">
+                <div class="mod-icon-fallback">BDT</div>
+                <div>
+                    <h2 class="mod-title">⚡ BetterDt-Trainer</h2>
+                    <p style="color: #fbbf24; font-size: 0.9rem; margin-top: 4px; font-weight: 600;">For Devices Tycoon</p>
+                </div>
+            </div>
+
+            <p class="mod-desc">
+                A feature-rich trainer mod for Devices Tycoon, built on top of the BetterDT framework. Effortlessly manage your in-game budget, research points, and visual themes with a modern glass-morphism interface.
             </p>
 
             <div class="features-grid">
-                <div class="feature-item">
-                    <strong>💰 Money Hack</strong>
-                    Add +$10M or +$1B instantly to your budget.
+                <div class="feature-box">
+                    <h4>💰 Money Hack</h4>
+                    <p>Add +$10,000,000 or +$1,000,000,000 instantly to your budget.</p>
                 </div>
-                <div class="feature-item">
-                    <strong>🔬 Research Points</strong>
-                    Get +100k RP to fast-track your technology unlocks.
+                <div class="feature-box">
+                    <h4>🔬 Research Points</h4>
+                    <p>Get +100,000 RP to fast-track your technology unlocks.</p>
                 </div>
-                <div class="feature-item">
-                    <strong>🎨 Custom Themes</strong>
-                    Switch between Gold, Neon, and Dark visual styles.
+                <div class="feature-box">
+                    <h4>🎨 Custom Themes</h4>
+                    <p>Switch between Gold, Neon Blue, and Dark visual styles.</p>
                 </div>
-                <div class="feature-item">
-                    <strong>⌨️ Hotkeys & UI</strong>
-                    Toggle via F4/Insert, customize position and elements.
+                <div class="feature-box">
+                    <h4>⚙️ UI & Keybinds</h4>
+                    <p>Toggle panel via F4 / Insert, adjust screen placement & settings.</p>
                 </div>
             </div>
 
             <div class="btn-group">
                 <a href="https://github.com/androhaks/BetterDt-Trainer" target="_blank" class="btn btn-primary">
-                    📦 View on GitHub / Download
+                    📦 Download / View GitHub
                 </a>
                 <a href="https://github.com/androhaks/BetterDt-Trainer/releases" target="_blank" class="btn btn-secondary">
                     🚀 Latest Releases
@@ -234,7 +271,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 androhaks. Created with BetterDT Framework.</p>
+        <p>© 2026 androhaks. Powered by BetterDT Framework.</p>
     </footer>
 
 </body>
