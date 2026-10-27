@@ -18,7 +18,8 @@ A feature-rich trainer mod for **Devices Tycoon**, built on top of the **BetterD
 
 ---
 
-№How to install?
+##How to install?
+
 Download BetterDT.zip from the latest release (under "Assets"). Open the game folder: Steam → Library → right-click Devices Tycoon → Manage → Browse local files. A folder with Devices Tycoon.exe opens. Open the zip and copy everything in it into that folder: BetterDT_x64.ext.dll and the mods folder must end up right next to Devices Tycoon.exe, not in a new subfolder. Start the game. In Settings there is now a BetterDT section on the left – that means it works. Updates are automatic: when a new version is out, BetterDT downloads it when the game starts and tells you in the main menu. Click Restart now to use it right away, or Keep playing and it starts the next time you launch the game. You can turn automatic updates off in Settings → BetterDT.
 
 Beta versions: turn on Beta versions in Settings → BetterDT to get test versions (GitHub pre-releases such as 0.4.1-beta.1) before the official release. They may have bugs. Once the official version is out, BetterDT moves on to it. When you turn betas off while you have one, Back to official installs the latest official version right away (it is also the line channel=beta in mods\betterdt.ini).
