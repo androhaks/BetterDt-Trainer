@@ -18,4 +18,4 @@ Uninstall: delete BetterDT_x64.ext.dll and the mods folder from the game folder.
 https://github.com/JelenXP/BetterDT/tree/main
 # Download us bild for us mod!
 # How open the mod
-open the trainer f6 or ins
+open the trainer f4 or ins
