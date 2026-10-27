@@ -1,5 +1,6 @@
 # BetterDt-Trainer
-Hi is mod for BetterDt <img width="518" height="174" alt="image" src="https://github.com/user-attachments/assets/6f8a4842-2c28-4723-bb1b-014f5de78b02" />
+Hi is mod for BetterDt
+<img width="518" height="174" alt="image" src="https://github.com/user-attachments/assets/6f8a4842-2c28-4723-bb1b-014f5de78b02" />
 # How to install?
 Download BetterDT.zip from the latest release (under "Assets").
 Open the game folder: Steam → Library → right-click Devices Tycoon → Manage → Browse local files. A folder with Devices Tycoon.exe opens.
