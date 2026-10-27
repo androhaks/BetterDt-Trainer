@@ -1,7 +1,9 @@
+<img width="929" height="278" alt="BetterDt_Trainer_banner" src="https://github.com/user-attachments/assets/912100b7-5f06-41c2-a800-01ba3c95be0c" />
+
+
 # BetterDt-Trainer
 Hi is mod for BetterDt
 
-<img width="518" height="174" alt="image" src="https://github.com/user-attachments/assets/6f8a4842-2c28-4723-bb1b-014f5de78b02" />
 
 # How to install?
 Download BetterDT.zip from the latest release (under "Assets").
